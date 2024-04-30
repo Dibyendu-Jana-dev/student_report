@@ -1,0 +1,79 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type Todo {
+  id: ID!
+  text: String!
+  done: Boolean!
+  user: User!
+}
+
+type User {
+  id: ID!
+  name: String!
+}
+
+input CreateStudentsInput {
+  id: Int
+  studentName: String
+  studentClass: Int
+  studentRoll: Int
+  studentAddress: String
+  studentBloodGroup: String
+  studentMobileNumber: String
+  dateOfBirth: String
+  subject: Subjects
+  createdAt: String
+  updatedAt: String
+}
+type CreateStudentsResponse {
+  Id: Int!
+  studentName: String!
+  studentClass: Int!
+  studentRoll: Int!
+  studentAddress: String!
+  studentBloodGroup: String!
+  studentMobileNumber: String!
+  score: Int!
+  dateOfBirth: String!
+  subject: Subject!
+  createdAt: String!
+  updatedAt: String!
+}
+
+input Subjects {
+  Bengali: Float!
+  English: Float!
+  Mathematics: Float!
+  Physics: Float!
+  Biology: Float!
+  Chemistry: Float!
+}
+type Subject {
+  Bengali: Float!
+  English: Float!
+  Mathematics: Float!
+  Physics: Float!
+  Biology: Float!
+  Chemistry: Float!
+}
+
+input GetStudentDetailsInput {
+  id: Int!
+}
+
+type Query {
+  todos: [Todo!]!
+  getStudentDetails(input: GetStudentDetailsInput!):CreateStudentsResponse!
+}
+
+input NewTodo {
+  text: String!
+  userId: String!
+}
+
+type Mutation {
+  createTodo(input: NewTodo!): Todo!
+  upsertStudentDetails(input: CreateStudentsInput!): CreateStudentsResponse!
+}
